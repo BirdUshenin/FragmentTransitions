@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 
 
 class FragmentC : Fragment() {
@@ -15,11 +18,17 @@ class FragmentC : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_c, container, false)
+       setFragmentResultListener("result_key") { key, result ->
+           val data = result.getString("data")
+           view.findViewById<TextView>(R.id.textView).text = data
+       }
+
 
         val backToA = view.findViewById<Button>(R.id.ba3)
         backToA.setOnClickListener{
-            requireActivity().supportFragmentManager.popBackStack("Fragment A", 0)
+           requireActivity().supportFragmentManager.popBackStack("FragmentA", 0)
         }
+
         return view
     }
 

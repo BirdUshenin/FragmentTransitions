@@ -14,6 +14,7 @@ class FragmentA : Fragment() {
         savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_a, container, false)
 
+
         val nextToB = view.findViewById<Button>(R.id.button)
         nextToB.setOnClickListener{
             val fragmentB = FragmentB()

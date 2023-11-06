@@ -15,8 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.fragA, fragmentA)
-        transaction.addToBackStack(null)
+        transaction.addToBackStack("FragmentA")
         transaction.commit()
+
     }
 
 }

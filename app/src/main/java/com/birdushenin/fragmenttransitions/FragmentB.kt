@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 
 class FragmentB : Fragment() {
 
@@ -17,6 +19,9 @@ class FragmentB : Fragment() {
 
         val nextToB = view.findViewById<Button>(R.id.button2)
         nextToB.setOnClickListener{
+            val result = "Привет, kak dela? This is Fragment C"
+            setFragmentResult("result_key", bundleOf("data" to result))
+
             val fragmentC = FragmentC()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragC, fragmentC)
@@ -26,7 +31,6 @@ class FragmentB : Fragment() {
         val backToA = view.findViewById<Button>(R.id.backToA)
         backToA.setOnClickListener{
             requireActivity().supportFragmentManager.popBackStack()
-
         }
         return view
     }
