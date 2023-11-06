@@ -1,24 +1,24 @@
 package com.birdushenin.fragmenttransitions
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 
 class FragmentB : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_b, container, false)
 
         val nextToB = view.findViewById<Button>(R.id.button2)
-        nextToB.setOnClickListener{
+        nextToB.setOnClickListener {
             val result = "Привет, kak dela? This is Fragment C"
             setFragmentResult("result_key", bundleOf("data" to result))
 
@@ -29,7 +29,7 @@ class FragmentB : Fragment() {
                 .commit()
         }
         val backToA = view.findViewById<Button>(R.id.backToA)
-        backToA.setOnClickListener{
+        backToA.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
         return view
